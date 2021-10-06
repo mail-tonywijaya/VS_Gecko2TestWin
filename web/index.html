@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebView Lanjutan</title>
+	<script type="text/javascript">
+	    // Fungsi-fungsi berikut hanya untuk aplikasi Android
+	    
+		function showAndroidSms()
+		{
+			if (typeof Android !== "undefined" || Android !== null)
+			{
+				Android.showSms();
+			}
+			else
+			{
+				alert("Object not found");
+			}
+		}
+
+		function showAndroidToast(message)
+		{
+			if (typeof Android !== "undefined" || Android !== null)
+			{
+				Android.showToast(message);
+			}
+			else
+			{
+				alert("Object not found");
+			}
+		}
+	</script>
+	<script type="text/javascript">
+	    // Fungsi-fungsi berikut hanya untuk aplikasi Windows
+	    
+	    function showWindowsFontDialog()
+	    {
+	        var option =
+	        {
+	            "view": window,
+	            "bubbles": false,
+	            "cancelable": false,
+	            "data": ""
+	        };
+	        
+	        event = new MessageEvent("ShowFontDialog", option);
+	        document.dispatchEvent(event);
+	    }
+	    
+	    function showWindowsMessageBox(message)
+	    {
+	        var option =
+	        {
+	            "view": window,
+	            "bubbles": false,
+	            "cancelable": false,
+	            "data": message
+	        };
+	        
+	        event = new MessageEvent("ShowMessageBox", option);
+	        document.dispatchEvent(event);
+	    }
+	</script>
+</head>
+<body>
+    <h2>Web</h2>
+	<button onclick="alert('Halo, ini dari JavaScript!');">Alert dari JavaScript</button>
+	
+	<h2>Android</h2>
+	<button onclick="showAndroidToast('Hello, ini Toast dari JavaScript');">Toast dari JavaScript</button>
+	<br />&nbsp;<br />
+	<button onclick="showAndroidSms();">Memanggil Activity SMS dari JavaScript</button>
+	
+	<h2>Windows</h2>
+	<button onclick="showWindowsMessageBox('Hello, ini MessageBox dari Windows');">MessageBox dari Windows</button>
+	<br />&nbsp;<br />
+	<button onclick="showWindowsFontDialog();">FontDialog dari Windows</button>
+</body>
+</html>
